@@ -9,27 +9,21 @@ export class ListingsService {
   allListings: Array<Listing>;
   savedListings: Array<Listing>;
 
-  listing1 = new Listing();
-  listing2 = new Listing();
+  listing1: Listing;
+  listing2: Listing;
 
   constructor() {
-    this.listing1.name = 'Home in Cape Town';
-    this.listing1.location = 'Camps Bay';
-    this.listing1.price = 1500;
-
-    this.listing2.name = 'Home in Cape Town';
-    this.listing2.location = 'Camps Bay';
-    this.listing2.price = 1500;
+    this.listing1 = new Listing("Home in Cape Town", "Camps Bay", 1200, "fhsjhfjd");
+    this.listing2 = new Listing("Home in Cape Town", "Sea Point", 1200, "fhsjhfjd");
 
     this.allListings = [this.listing1, this.listing2];
-    this.savedListings = [this.listing1, this.listing2];
   }
 
   getAllItems() {
     return this.allListings;   
   }
 
-  getSavedItems() {
-    return this.savedListings;   
+  addListing(listing:Listing) {
+    this.allListings.push(listing);
   }
 }
