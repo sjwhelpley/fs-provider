@@ -9,11 +9,11 @@ import { User } from '../models/user';
   styleUrls: ['./tab5.page.scss'],
 })
 export class Tab5Page {
-  public profile: User;
+  public profile: User = new User();
 
   constructor (
     private usersService: UsersService
   ) { 
-    //this.profile = this.usersService.getProfile();
+    this.profile = this.usersService.getProfile();
   }
 }
