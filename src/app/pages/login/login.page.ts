@@ -1,35 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
 
-import { UserService } from '../../services/users.service';
-import { Users } from '../../models/users';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   email: string;
   password: string;
 
-  users: Array<Users>;
-
   constructor(
     private alertCtrl: AlertController,
     private navCtrl: NavController,
-    private usersService: UserService
-  ) {
-
-  }
-
-  ngOnInit() {
-  }
+    private userService: UserService
+  ) { }
 
   login() {
-    const authUser = new Users(this.email, this.password);
-    this.usersService.logIn(authUser).then(user => {
+    this.userService.login(this.email, this.password).then(user => {
       this.navCtrl.navigateForward('tabs', user);
     }).catch(err => {
       this.presentAlert(err);
@@ -37,8 +28,7 @@ export class LoginPage implements OnInit {
   }
 
   register() {
-    alert("Feature coming soon!")
-    // This should navigate to the register page:
+    this.navCtrl.navigateForward('register');
   }
 
   async presentAlert(err) {

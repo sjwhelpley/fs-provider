@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { ListingsService } from '../../services/listings.service'
-import { Listing } from '../../models/listings';
+import { ListingService } from '../../services/listing.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,26 +8,19 @@ import { Router } from '@angular/router';
   templateUrl: './create.page.html',
   styleUrls: ['./create.page.scss'],
 })
-export class CreatePage implements OnInit {
+export class CreatePage {
   name: string;
   location: string;
   price: number;
   imgUrl: string;
-  newListing: Listing;
   
-
   constructor(
-    private listingsService: ListingsService,
+    private listingService: ListingService,
     private router: Router
-  ) {
-  }
-
-  ngOnInit() {
-  }
+  ) { }
 
   createListing() {
-      this.newListing = new Listing(this.name, this.location, this.price, this.imgUrl); 
-      this.listingsService.addListing(this.newListing);
-      this.router.navigateByUrl('/tabs/tab1');
+    this.listingService.create(this.name, this.location, this.price, this.imgUrl);
+    this.router.navigateByUrl('/tabs/tab1');
   }
 }

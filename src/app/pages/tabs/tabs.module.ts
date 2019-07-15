@@ -13,14 +13,14 @@ const routes: Routes = [
     path:'tabs',
     component: TabsPage,
     children: [
-      { path: 'tab1', loadChildren: '../tab1/tab1.module#Tab1PageModule'},
-      { path: 'tab4', loadChildren: '../tab4/tab4.module#Tab4PageModule'},
-      { path: 'tab5', loadChildren: '../tab5/tab5.module#Tab5PageModule'}
+      { path: 'explore', loadChildren: '../explore/explore.module#ExplorePageModule'},
+      { path: 'inbox', loadChildren: '../inbox/inbox.module#InboxPageModule'},
+      { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule'}
     ]
   },
   {
     path:'',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/explore',
     pathMatch: 'full'
   }
 ];
